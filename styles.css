@@ -1,139 +1,105 @@
-:root {
-  --primary-color: #0d3b66;
-  --secondary-color: #f4a261;
-  --bg-light: #f8f9fa;
-  --text-color: #333333;
+/* Live Tracking UI Upgrade */
+.tracking-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a252f;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  text-align: left;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  background-color: var(--bg-light);
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.navbar {
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 15px 0;
-}
-
-.nav-container {
+.route-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.logo {
-  height: 50px;
-}
-
-nav a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: var(--primary-color);
   font-weight: bold;
-}
-
-.hero {
-  background: linear-gradient(135deg, #0d3b66, #1d3557);
-  color: white;
-  padding: 50px 0;
-  text-align: center;
-}
-
-.tracking-box {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.tracking-box input {
-  padding: 10px;
-  width: 200px;
-  border: none;
-  border-radius: 4px;
-}
-
-.tracking-box button {
-  padding: 10px 16px;
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.tracking-result {
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-.registration-section {
-  padding: 40px 0;
-  background: #ffffff;
-}
-
-.registration-section h2 {
-  text-align: center;
-  color: var(--primary-color);
-}
-
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  background: var(--bg-light);
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.form-group {
+  font-size: 1.1rem;
+  border-bottom: 2px solid #eef2f5;
+  padding-bottom: 10px;
   margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
 }
 
-.form-group-row {
-  display: flex;
-  gap: 10px;
-}
-
-label {
-  margin-bottom: 5px;
-  font-size: 13px;
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.status-transit { background: #e3f2fd; color: #0d47a1; }
+.status-delivered { background: #e8f5e9; color: #1b5e20; }
+
+.tracking-progress {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 25px 0;
 }
 
-.submit-btn {
-  width: 100%;
-  padding: 10px;
-  background-color: var(--primary-color);
+.tracking-progress::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 10%;
+  width: 80%;
+  height: 4px;
+  background: #cbd5e1;
+  z-index: 1;
+}
+
+.progress-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+}
+
+.step-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #cbd5e1;
   color: white;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  font-size: 14px;
 }
 
-.footer {
-  background: #111111;
-  color: #cccccc;
-  padding: 30px 0;
-  font-size: 13px;
+.progress-step.active .step-icon {
+  background: #ff7b00;
+  box-shadow: 0 0 0 4px rgba(255, 123, 0, 0.2);
 }
 
-.footer a {
-  color: var(--secondary-color);
+.progress-step.completed .step-icon {
+  background: #2ec4b6;
+}
+
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  border-left: 2px solid #2ec4b6;
+  font-size: 0.9rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2ec4b6;
 }
