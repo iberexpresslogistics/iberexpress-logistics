@@ -115,7 +115,7 @@ function sendRegistrationEmail(event) {
     country: document.getElementById("country").value
   };
 
-  emailjs.send("service_nz2yql6", "YOUR_TEMPLATE_ID", templateParams)
+  emailjs.send("service_nz2yql6",template_jrghilr, templateParams)
     .then(function(response) {
        statusDiv.textContent = "¡Registro completado! Se ha enviado un recibo a su correo.";
        statusDiv.style.color = "green";
