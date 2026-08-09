@@ -10,7 +10,6 @@ body {
   color: #333;
 }
 
-/* Header Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -23,16 +22,6 @@ body {
   z-index: 100;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.site-logo {
-  height: 40px;
-}
-
 .brand-title {
   font-size: 1.2rem;
   font-weight: bold;
@@ -40,18 +29,17 @@ body {
 }
 
 .nav-links a {
-  margin-left: 20px;
+  margin-left: 15px;
   text-decoration: none;
   color: #134074;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
-/* Hero & Tracking Section */
 .hero-section {
   background: linear-gradient(135deg, #0b2545 0%, #134074 100%);
   color: white;
-  padding: 60px 20px;
+  padding: 50px 20px;
   text-align: center;
 }
 
@@ -60,45 +48,156 @@ body {
   margin: 0 auto;
 }
 
-.hero-content h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.hero-content p {
-  font-size: 1rem;
-  opacity: 0.9;
-  margin-bottom: 25px;
-}
-
 .search-box {
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 15px;
+  margin: 20px 0;
 }
 
 .search-box input {
   width: 70%;
-  padding: 14px;
+  padding: 12px;
   border-radius: 8px;
   border: none;
   font-size: 1rem;
-  outline: none;
 }
 
 .search-box button {
-  padding: 14px 24px;
+  padding: 12px 20px;
   background-color: #ee6c4d;
   color: white;
   border: none;
   border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.about-card h2 {
+  color: #0b2545;
+  margin-bottom: 10px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.feature-item {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #134074;
+}
+
+.form-section-title {
+  color: #134074;
+  font-size: 1rem;
+  margin: 18px 0 10px;
+  border-bottom: 1px solid #eef2f5;
+  padding-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #134074;
+  color: white;
+  border: none;
+  border-radius: 6px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
 }
 
-/* Live Tracking Display Card */
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.highlight-code {
+  color: #ee6c4d;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.badge-active {
+  background: #e3f2fd;
+  color: #0d47a1;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
 .tracking-card {
   background: #ffffff;
   color: #1a252f;
@@ -170,128 +269,13 @@ body {
 
 .progress-step.active .step-icon {
   background: #ee6c4d;
-  box-shadow: 0 0 0 4px rgba(238, 108, 77, 0.2);
 }
 
-.progress-step.completed .step-icon {
-  background: #2ec4b6;
-}
-
-.timeline-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 10px;
-  border-left: 2px solid #2ec4b6;
-  font-size: 0.88rem;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -5px;
-  top: 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #2ec4b6;
-}
-
-/* User Registration Section */
-.container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.card {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.card h2 {
-  color: #0b2545;
-  margin-bottom: 8px;
-}
-
-.subtitle {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-weight: 600;
-  font-size: 0.88rem;
-  margin-bottom: 6px;
-  color: #134074;
-}
-
-.form-group input {
-  padding: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.95rem;
-}
-
-.form-row {
-  display: flex;
-  gap: 15px;
-}
-
-.form-row .form-group {
-  flex: 1;
-}
-
-.btn-submit {
-  width: 100%;
-  padding: 14px;
-  background-color: #134074;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-#registerStatus {
-  margin-top: 15px;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* Footer */
 .footer {
   background: #0b2545;
   color: white;
-  padding: 30px 20px;
+  padding: 25px;
   text-align: center;
-  font-size: 0.9rem;
-  margin-top: 40px;
-}
-
-.footer a {
-  color: #ee6c4d;
-  text-decoration: none;
-}
-
-.copyright {
-  opacity: 0.6;
-  margin-top: 15px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  margin-top: 30px;
 }
