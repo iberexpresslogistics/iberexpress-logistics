@@ -3,81 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IberExpress Logistics | Envíos y Seguimiento</title>
+  <title>IberExpress Logistics - Rastrear Paquete</title>
   <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
+  <!-- Header / Navigation -->
   <header class="navbar">
-    <div class="container nav-container">
-      <img src="logo.png" alt="IberExpress Logistics Logo" class="logo">
-      <nav>
-        <a href="#track">Seguimiento</a>
-        <a href="#register">Registro</a>
-        <a href="#contact">Contacto</a>
-      </nav>
+    <div class="logo-container">
+      <img src="https://iberexpresslogistics.github.io/iberexpress-logistics/logo.png" alt="IberExpress Logistics Logo" class="site-logo" onerror="this.style.display='none'">
+      <span class="brand-title">IberExpress Logistics</span>
     </div>
+    <nav class="nav-links">
+      <a href="#seguimiento">Seguimiento</a>
+      <a href="#registro">Registro</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </header>
 
-  <section id="track" class="hero">
-    <div class="container hero-content">
+  <!-- Hero / Tracking Section -->
+  <section id="seguimiento" class="hero-section">
+    <div class="hero-content">
       <h1>Rastrear su Paquete</h1>
-      <p>Ingrese su número de seguimiento para conocer el estado de su envío.</p>
-      <div class="tracking-box">
+      <p>Ingrese su número de seguimiento para conocer el estado y la ruta en vivo de su envío.</p>
+
+      <div class="search-box">
         <input type="text" id="trackingInput" placeholder="Ej: IBX12345678">
         <button onclick="trackParcel()">Buscar</button>
       </div>
-      <div id="trackingResult" class="tracking-result"></div>
+
+      <div id="trackingResult"></div>
+      <div id="trackingDetails"></div>
     </div>
   </section>
 
-  <section id="register" class="registration-section">
-    <div class="container">
+  <!-- User Registration Section -->
+  <section id="registro" class="container">
+    <div class="card">
       <h2>Registro de Usuario</h2>
-      <p>Regístrese para gestionar sus envíos y recibir actualizaciones.</p>
-      
-      <form id="registerForm" action="https://formspree.io/f/xyegeybw" method="POST">
+      <p class="subtitle">Regístrese para gestionar sus envíos y recibir actualizaciones en su correo.</p>
+
+      <form id="registerForm" onsubmit="sendRegistrationEmail(event)">
         <div class="form-group">
           <label for="fullname">Nombre Completo</label>
-          <input type="text" id="fullname" name="Full Name" required>
+          <input type="text" id="fullname" placeholder="Su nombre y apellido" required>
         </div>
 
         <div class="form-group">
           <label for="phone">Teléfono</label>
-          <input type="tel" id="phone" name="Phone Number" required>
+          <input type="tel" id="phone" placeholder="+34 600 000 000" required>
         </div>
 
         <div class="form-group">
           <label for="email">Correo Electrónico</label>
-          <input type="email" id="email" name="Email Address" required>
+          <input type="email" id="email" placeholder="ejemplo@correo.com" required>
         </div>
 
-        <div class="form-group-row">
+        <div class="form-row">
           <div class="form-group">
             <label for="city">Ciudad</label>
-            <input type="text" id="city" name="City" required>
+            <input type="text" id="city" placeholder="Madrid" required>
           </div>
           <div class="form-group">
             <label for="country">País</label>
-            <input type="text" id="country" name="Country" required>
+            <input type="text" id="country" placeholder="España" required>
           </div>
         </div>
 
-        <button type="submit" class="submit-btn">Completar Registro</button>
+        <button type="submit" class="btn-submit">Completar Registro</button>
+        <div id="registerStatus"></div>
       </form>
     </div>
   </section>
 
-  <footer id="contact" class="footer">
-    <div class="container footer-content">
-      <div>
-        <h3>IberExpress Logistics</h3>
-        <p>Sede Principal: Avenida Central 13, Barajas, 28042 Madrid, España</p>
-        <p>Soporte: <a href="mailto:iberexpresslogistics@gmail.com">iberexpresslogistics@gmail.com</a></p>
-      </div>
-      <div>
-        <p>&copy; 2026 IberExpress Logistics. Todos los derechos reservados.</p>
-      </div>
+  <!-- Footer -->
+  <footer id="contacto" class="footer">
+    <div class="footer-content">
+      <h3>IberExpress Logistics</h3>
+      <p>Sede Principal: Avenida Central 13, Barajas, 28042 Madrid, España</p>
+      <p>Soporte: <a href="mailto:Iberexpresslogistics@gmail.com">Iberexpresslogistics@gmail.com</a></p>
+      <p class="copyright">&copy; 2026 IberExpress Logistics. Todos los derechos reservados.</p>
     </div>
   </footer>
 
