@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IberExpress Logistics - Rastrear Paquete</title>
+  <title>IberExpress Logistics - Rastrear y Enviar</title>
   <link rel="stylesheet" href="styles.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
-  <!-- Header / Navigation -->
+  <!-- Navbar -->
   <header class="navbar">
     <div class="logo-container">
-      <img src="https://iberexpresslogistics.github.io/iberexpress-logistics/logo.png" alt="IberExpress Logistics Logo" class="site-logo" onerror="this.style.display='none'">
-      <span class="brand-title">IberExpress Logistics</span>
+      <span class="brand-title">📦 IberExpress Logistics</span>
     </div>
     <nav class="nav-links">
       <a href="#seguimiento">Seguimiento</a>
-      <a href="#registro">Registro</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#registro">Registrar Envío</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <!-- Hero / Tracking Section -->
+  <!-- Hero & Tracking Section -->
   <section id="seguimiento" class="hero-section">
     <div class="hero-content">
       <h1>Rastrear su Paquete</h1>
@@ -38,44 +38,100 @@
     </div>
   </section>
 
-  <!-- User Registration Section -->
+  <!-- About Company Section -->
+  <section id="nosotros" class="container">
+    <div class="card about-card">
+      <h2>Sobre IberExpress Logistics</h2>
+      <p><strong>IberExpress Logistics</strong> es una empresa líder en soluciones de transporte urgente y logística integral en España y Europa. Nos especializamos en la gestión segura y rastreo en tiempo real de paquetería comercial y personal.</p>
+      <div class="features-grid">
+        <div class="feature-item">
+          🚀 <strong>Envíos Express:</strong> Entregas garantizadas en 24 a 48 horas.
+        </div>
+        <div class="feature-item">
+          📍 <strong>Rastreo 24/7:</strong> Monitoreo constante de la ruta de su paquete.
+        </div>
+        <div class="feature-item">
+          🔒 <strong>Cuidado Seguro:</strong> Protocolos estrictos de manejo y custodia.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Package Registration Section -->
   <section id="registro" class="container">
     <div class="card">
-      <h2>Registro de Usuario</h2>
-      <p class="subtitle">Regístrese para gestionar sus envíos y recibir actualizaciones en su correo.</p>
+      <h2>Registro y Envío de Paquete</h2>
+      <p class="subtitle">Complete la información para generar su código de seguimiento y recibo oficial.</p>
 
       <form id="registerForm" onsubmit="sendRegistrationEmail(event)">
+        <h3 class="form-section-title">Datos del Destinatario</h3>
         <div class="form-group">
           <label for="fullname">Nombre Completo</label>
-          <input type="text" id="fullname" placeholder="Su nombre y apellido" required>
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Teléfono</label>
-          <input type="tel" id="phone" placeholder="+34 600 000 000" required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Correo Electrónico</label>
-          <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+          <input type="text" id="fullname" placeholder="Nombre del receptor" required>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="city">Ciudad</label>
-            <input type="text" id="city" placeholder="Madrid" required>
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" placeholder="+34 600 000 000" required>
           </div>
           <div class="form-group">
-            <label for="country">País</label>
-            <input type="text" id="country" placeholder="España" required>
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" placeholder="ejemplo@correo.com" required>
           </div>
         </div>
 
-        <button type="submit" class="btn-submit">Completar Registro</button>
+        <h3 class="form-section-title">Detalles del Envío</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="origin">Ciudad de Origen</label>
+            <input type="text" id="origin" placeholder="Ej: Madrid, España" required>
+          </div>
+          <div class="form-group">
+            <label for="destination">Ciudad de Destino</label>
+            <input type="text" id="destination" placeholder="Ej: Barcelona, España" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="packageDesc">Descripción del Contenido del Paquete</label>
+          <input type="text" id="packageDesc" placeholder="Ej: Documentos comerciales, Electrónica, Ropa" required>
+        </div>
+
+        <button type="submit" class="btn-submit">Completar Registro y Generar Recibo</button>
         <div id="registerStatus"></div>
       </form>
     </div>
   </section>
+
+  <!-- Printable Receipt Modal -->
+  <div id="receiptModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeReceipt()">&times;</span>
+      <div id="receiptPrintArea">
+        <div class="receipt-header">
+          <h2>IberExpress Logistics</h2>
+          <p>Comprobante Oficial de Registro de Envío</p>
+        </div>
+        <hr>
+        <div class="receipt-body">
+          <p><strong>Código de Seguimiento:</strong> <span id="rTrackingCode" class="highlight-code"></span></p>
+          <p><strong>Destinatario:</strong> <span id="rName"></span></p>
+          <p><strong>Correo:</strong> <span id="rEmail"></span></p>
+          <p><strong>Teléfono:</strong> <span id="rPhone"></span></p>
+          <hr>
+          <p><strong>Origen:</strong> <span id="rOrigin"></span></p>
+          <p><strong>Destino:</strong> <span id="rDestination"></span></p>
+          <p><strong>Contenido:</strong> <span id="rDesc"></span></p>
+          <p><strong>Estado Inicial:</strong> <span class="badge-active">Procesando en Almacén</span></p>
+        </div>
+        <div class="receipt-footer">
+          <p>Conserve este código para rastrear su paquete en nuestro portal web.</p>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="window.print()" style="margin-top: 15px;">Imprimir Recibo</button>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer id="contacto" class="footer">
